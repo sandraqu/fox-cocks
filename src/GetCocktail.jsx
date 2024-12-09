@@ -3,7 +3,7 @@ const GetCocktail = ({ getCocktail, isLoading }) => {
     <div className="get-cocktail-container">
       <p>Get a cocktail recipe with Claude</p>
       <button onClick={getCocktail}>
-        {isLoading ? "Loading..." : "Get cocktail"}
+        {isLoading ? "Loading..." : "Generate cocktail"}
       </button>
     </div>
   );
