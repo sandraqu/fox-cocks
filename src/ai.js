@@ -6,7 +6,6 @@ const anthropic = new Anthropic({
 });
 
 const getCocktailFromClaude = async (ingredients) => {
-  console.log("ing", ingredients);
   const INGREDIENTS_STR = ingredients.join(", ");
 
   const response = await anthropic.messages.create({
