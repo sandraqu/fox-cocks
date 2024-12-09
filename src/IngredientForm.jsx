@@ -9,12 +9,20 @@ const IngredientForm = () => {
   const [ingredientData, setIngredientData] = React.useState([]);
   const [cocktail, setCocktail] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   const getCocktail = async () => {
     setIsLoading(true);
-    const cocktailMarkdown = await getCocktailFromClaude(ingredientData);
+    const response = await getCocktailFromClaude(ingredientData);
+    const jsonResponse = await response.json();
+    console.log("response", response);
+    console.log("jsonResponse", jsonResponse);
+    if (jsonResponse.error) {
+      setError(true);
+    } else {
+      setCocktail(cocktailMarkdown);
+    }
     setIsLoading(false);
-    setCocktail(cocktailMarkdown);
   };
   const handleChange = (e) => {
     setIngredient(e.target.value);
@@ -43,6 +51,7 @@ const IngredientForm = () => {
         <GetCocktail getCocktail={getCocktail} isLoading={isLoading} />
       )}
       {cocktail && <Cocktail cocktail={cocktail} />}
+      {error && <p>Claude is too busy at this time.</p>}
     </>
   );
 };
