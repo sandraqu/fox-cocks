@@ -13,11 +13,9 @@ const IngredientForm = () => {
 
   const getCocktail = async () => {
     setIsLoading(true);
-    const response = await getCocktailFromClaude(ingredientData);
-    const jsonResponse = await response.json();
-    console.log("response", response);
-    console.log("jsonResponse", jsonResponse);
-    if (jsonResponse.error) {
+    const cocktailMarkdown = await getCocktailFromClaude(ingredientData);
+
+    if (typeof cocktailMarkdown === "object") {
       setError(true);
     } else {
       setCocktail(cocktailMarkdown);
