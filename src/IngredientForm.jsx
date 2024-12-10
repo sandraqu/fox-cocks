@@ -5,7 +5,7 @@ import GetCocktail from "./GetCocktail";
 import { getCocktailFromClaude } from "./ai";
 
 const IngredientForm = () => {
-  const [ingredient, setIngredient] = React.useState([]);
+  const [ingredients, setIngredients] = React.useState([]);
   const [ingredientData, setIngredientData] = React.useState([]);
   const [cocktail, setCocktail] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
@@ -22,26 +22,44 @@ const IngredientForm = () => {
     setIsLoading(false);
   };
   const handleChange = (e) => {
-    setIngredient(e.target.value);
+    setIngredients(e.target.value);
+  };
+
+  const format = (ingredients) => {
+    // if it's a comma separated string, split it into an array
+    if (ingredients.includes(",")) {
+      const cleanedIngredients = ingredients
+        .split(",")
+        .map((item) => item.trim());
+      const filteredIngredients = cleanedIngredients.filter(
+        (item) => item !== ""
+      );
+      return filteredIngredients;
+    }
+    return [ingredients];
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIngredientData((prevIngredients) => [...prevIngredients, ingredient]);
-    setIngredient("");
+    const formattedIngredients = format(ingredients);
+    setIngredientData((prevIngredients) => [
+      ...prevIngredients,
+      ...formattedIngredients,
+    ]);
+    setIngredients("");
   };
 
   return (
     <>
       <form onSubmit={handleSubmit} className="ingredient-form">
         <input
-          id="ingredient"
+          id="ingredients"
           placeholder="e.g. Basil"
           type="text"
-          value={ingredient}
+          value={ingredients}
           onChange={handleChange}
         />
-        <button type="submit">Add ingredient</button>
+        <button type="submit">Add ingredient(s)</button>
       </form>
       <IngredientList ingredients={ingredientData} />
       {ingredientData.length > 0 && (
