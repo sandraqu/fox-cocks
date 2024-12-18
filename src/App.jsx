@@ -3,7 +3,7 @@ import Main from "./Main";
 
 function App() {
   return (
-    <div className="flex flex-col full-screen margin-top--3">
+    <div className="flex flex-col full-screen">
       <Header />
       <Main />
     </div>
