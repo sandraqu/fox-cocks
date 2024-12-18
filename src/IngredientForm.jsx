@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import IngredientList from "./IngredientList";
 import Cocktail from "./Cocktail";
-import GetCocktail from "./GetCocktail";
 import { getCocktailFromClaude } from "./ai";
 import Loader from "./Loader";
 
@@ -50,7 +48,6 @@ const IngredientForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("ingredientData", ingredientData);
     getCocktail(ingredientData);
   };
 
@@ -71,14 +68,9 @@ const IngredientForm = () => {
           type="text"
           value={ingredients}
           onChange={handleChange}
-          // autoComplete={ingredients}
         />
         {isLoading ? <Loader /> : <button type="submit">Mix it up!</button>}
       </form>
-      {/* <IngredientList ingredients={ingredientData} /> */}
-      {/* {ingredientData.length > 0 && (
-        <GetCocktail getCocktail={getCocktail} isLoading={isLoading} />
-      )} */}
       {cocktail && <Cocktail cocktail={cocktail} />}
       {error && <p>Claude is too busy at this time.</p>}
     </>
