@@ -1,15 +1,15 @@
 import React from "react";
-import geoFox from "/geo-fox-2.png";
+import logo from "/foxtails-logo.svg";
 
 const Header = () => {
   return (
     <header className="flex flex-col flex-1">
       <img
-        src={geoFox}
+        src={logo}
         className="foxtails-cocktails-logo"
-        alt="cocktail generator"
+        alt="foxtails - your artificial intelligence cocktail generator"
       />
-      <div className="logo-text">Foxtails</div>
+      {/* <div className="logo-text">Foxtails</div> */}
     </header>
   );
 };

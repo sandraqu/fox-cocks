@@ -32,3 +32,4 @@ dist-ssr
 Mock*.*
 .DS_Store
 package-lock.json
+.DS_Store
