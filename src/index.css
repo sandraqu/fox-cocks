@@ -126,8 +126,12 @@ header .logo-text {
   text-align: center;
   outline-style: none;
   box-shadow: none;
-  border-color: #cd8d72;
   background-color: #f7e4e0;
+}
+.ingredient-form > input::placeholder {
+  /* color: #cd8d72; */
+  /* color: #c08871; */
+  color: #bb8677;
 }
 
 .ingredient-form > button {
@@ -135,7 +139,7 @@ header .logo-text {
   border-radius: 0.6rem;
   border: none;
   background-color: #cc4c33;
-  color: #fafaf8;
+  color: #fffce7;
   font-size: 1.2rem;
   font-weight: 500;
   padding: 0.8rem 3rem;
